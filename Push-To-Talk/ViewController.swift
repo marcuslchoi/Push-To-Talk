@@ -47,7 +47,25 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onButtonRecordPress(_ sender: Any) {
-        
+        startRecording()
+    }
+    
+    func startRecording() {
+        let audioFilename = K.localDocsUrl.appendingPathComponent("recording.m4a")
+
+        do {
+            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: K.recordingSettings)
+            audioRecorder.delegate = self
+            audioRecorder.record()
+            btnRecord.setTitle("Tap to Stop", for: .normal)
+        } catch {
+            //finishRecording(success: false)
+        }
     }
 }
 
+extension ViewController: AVAudioRecorderDelegate {
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        print("audio recorder did finish recording")
+    }
+}
