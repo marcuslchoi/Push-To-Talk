@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Push To Talk"
         requestRecordingPermission()
         configureRecordButton()
     }
