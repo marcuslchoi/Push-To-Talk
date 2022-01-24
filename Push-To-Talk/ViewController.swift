@@ -12,10 +12,17 @@ class ViewController: UIViewController {
 
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
+    @IBOutlet weak var btnRecord: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         requestRecordingPermission()
+        addRecordButton()
+    }
+    
+    private func addRecordButton() {
+        let recordingImage = UIImage(systemName: SFSymbols.mic)
+        btnRecord.setImage(recordingImage, for: .normal)
     }
 
     private func requestRecordingPermission() {
@@ -37,6 +44,10 @@ class ViewController: UIViewController {
         } catch {
             // failed to record!
         }
+    }
+    
+    @IBAction func onButtonRecordPress(_ sender: Any) {
+        
     }
 }
 
