@@ -16,6 +16,7 @@
 		2C703C39279F57EE00AB313E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C703C38279F57EE00AB313E /* Constants.swift */; };
 		2C703C3C279F5F0B00AB313E /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C703C3B279F5F0B00AB313E /* UIViewController+Ext.swift */; };
 		2C703C3E279F696B00AB313E /* RecordingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C703C3D279F696B00AB313E /* RecordingsTableVC.swift */; };
+		2C703C41279F6BDA00AB313E /* RecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C703C40279F6BDA00AB313E /* RecordingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		2C703C38279F57EE00AB313E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2C703C3B279F5F0B00AB313E /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		2C703C3D279F696B00AB313E /* RecordingsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsTableVC.swift; sourceTree = "<group>"; };
+		2C703C40279F6BDA00AB313E /* RecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		2C703C22279F541300AB313E /* Push-To-Talk */ = {
 			isa = PBXGroup;
 			children = (
+				2C703C3F279F6BC800AB313E /* Managers */,
 				2C703C3A279F5EF900AB313E /* Extensions */,
 				2C703C37279F57E000AB313E /* Utilities */,
 				2C703C23279F541300AB313E /* AppDelegate.swift */,
@@ -90,6 +93,14 @@
 				2C703C3B279F5F0B00AB313E /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2C703C3F279F6BC800AB313E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2C703C40279F6BDA00AB313E /* RecordingManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C703C28279F541300AB313E /* ViewController.swift in Sources */,
+				2C703C41279F6BDA00AB313E /* RecordingManager.swift in Sources */,
 				2C703C24279F541300AB313E /* AppDelegate.swift in Sources */,
 				2C703C3C279F5F0B00AB313E /* UIViewController+Ext.swift in Sources */,
 				2C703C3E279F696B00AB313E /* RecordingsTableVC.swift in Sources */,
