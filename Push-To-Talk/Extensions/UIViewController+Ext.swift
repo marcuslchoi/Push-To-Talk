@@ -23,10 +23,12 @@ extension UIViewController {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                if let txt = alert.textFields?.first?.text { print(txt) }
+                if let txt = alert.textFields?.first?.text {
+                    RecordingManager.shared.renameFile(newName: txt)
+                }
             }
             alert.addTextField { textField in
-                textField.placeholder = "placeholder"
+                textField.placeholder = "input recording name..."
             }
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)

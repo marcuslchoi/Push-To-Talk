@@ -82,7 +82,7 @@ class ViewController: UIViewController {
         audioRecorder = nil
 
         if success {
-            self.showOkAlert(title: "Success!", msg: "Recording succeeded.")
+            self.showAlertWithTextField(title: "Success!", msg: "Please name your recording.")
         } else {
             self.showOkAlert(title: "Fail!", msg: "Recording failed.")
         }
@@ -92,6 +92,7 @@ class ViewController: UIViewController {
     }
     
     func playAudio() {
+        
         let audioFilename = K.localDocsUrl.appendingPathComponent("recording.m4a")
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audioFilename)

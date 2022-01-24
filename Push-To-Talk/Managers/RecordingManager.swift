@@ -15,6 +15,16 @@ class RecordingManager {
     private init() {
     }
     
+    func renameFile(newName: String) { //(fromName: String, toName: String) {
+        let oldAudioFilename = K.localDocsUrl.appendingPathComponent("recording.m4a")
+        let newAudioFilename = K.localDocsUrl.appendingPathComponent("\(newName).m4a")
+        do {
+            try FileManager.default.moveItem(at: oldAudioFilename, to: newAudioFilename)
+        } catch {
+            print(error)
+        }
+    }
+    
     func getLocalDocURLs() -> [URL]?
     {
         do
