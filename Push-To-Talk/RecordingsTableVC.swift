@@ -78,10 +78,30 @@ class RecordingsTableVC: UITableViewController {
     
     @objc func onButtonDeletePress(sender: UIButton) {
         let row = sender.tag
-        guard let localUrls = RecordingManager.shared.getLocalDocURLs(), localUrls.count > row else { return }
-        let toDeleteUrl = localUrls[row]
-        print("deleting \(toDeleteUrl)")
-        RecordingManager.shared.removeFile(localFileUrl: toDeleteUrl)
+        showConfirmDeleteAlert(for: row)
+    }
+    
+    private func showConfirmDeleteAlert(for row: Int)
+    {
+        guard let localUrls = RecordingManager.shared.getLocalDocURLs(), localUrls.count > row else {
+            showOkAlert(title: "Error", msg: "There was an error locating this file.")
+            return
+        }
+        let url = localUrls[row]
+        let fileName =  RecordingManager.shared.getFileName(from: url)
+        let alert = UIAlertController(title: "Are you sure?", message: "Do you want to delete \(fileName)?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+            self.deleteFile(url: url, row: row)
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(deleteAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func deleteFile(url: URL, row: Int) {
+        print("deleting \(url)")
+        RecordingManager.shared.removeFile(localFileUrl: url)
         let indexPath = IndexPath(row: row, section: sectionIndex)
         tableView.deleteRows(at: [indexPath], with: .fade)
         tableView.reloadData()

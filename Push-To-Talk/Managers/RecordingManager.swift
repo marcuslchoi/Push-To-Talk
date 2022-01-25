@@ -49,6 +49,10 @@ class RecordingManager {
         return nil
     }
     
+    func getFileName(from url: URL) -> String {
+        return url.deletingPathExtension().lastPathComponent
+    }
+    
     func removeFile(localFileUrl: URL)
     {
         if FileManager.default.fileExists(atPath: localFileUrl.path)
