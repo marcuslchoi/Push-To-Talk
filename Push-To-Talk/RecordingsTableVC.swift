@@ -56,8 +56,10 @@ class RecordingsTableVC: UITableViewController {
     @objc func onButtonPlayPress(sender: UIButton) {
         let row = sender.tag
         sender.backgroundColor = .systemGreen
-        currPlayingButton?.backgroundColor = .systemBackground
-        currPlayingButton = sender
+        if currPlayingButton != sender {
+            currPlayingButton?.backgroundColor = .systemBackground
+            currPlayingButton = sender
+        }
         playAudio(at: row)
     }
     
