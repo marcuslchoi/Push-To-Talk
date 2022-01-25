@@ -62,4 +62,32 @@ class RecordingManager {
             }
         }
     }
+    
+    func getCurrentDateString() -> String {
+        let currentDateTime = Date()
+        let userCalendar = Calendar.current
+        let requestedComponents: Set<Calendar.Component> = [
+            .year,
+            .month,
+            .day,
+            .hour,
+            .minute,
+            .second
+        ]
+
+        // get the components
+        let c = userCalendar.dateComponents(requestedComponents, from: currentDateTime)
+        let seconds = c.second!
+        var secStr: String
+        if seconds < 10 { secStr = "0\(seconds)"}  else {
+            secStr = "\(seconds)" }
+        
+        let minutes = c.minute!
+        var minStr: String
+        if minutes < 10 { minStr = "0\(minutes)"}  else {
+            minStr = "\(minutes)" }
+        
+        let dateStr = "\(c.month!) \(c.day!) \(c.year!), \(c.hour!):\(minStr):\(secStr)"
+        return dateStr
+    }
 }
