@@ -15,13 +15,6 @@ class RecordingCell: UITableViewCell {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var btnPlay: UIButton!
     @IBOutlet weak var btnDelete: UIButton!
-    @IBAction func onButtonPlayPress(_ sender: Any) {
-        
-    }
-    
-    @IBAction func onButtonDeletePress(_ sender: Any) {
-        
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

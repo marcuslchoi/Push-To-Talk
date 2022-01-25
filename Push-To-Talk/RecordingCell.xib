@@ -34,9 +34,6 @@
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="d"/>
-                        <connections>
-                            <action selector="onButtonDeletePress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ymD-db-q6S"/>
-                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xa-2y-aX3">
                         <rect key="frame" x="210" y="7" width="50" height="30"/>
@@ -46,9 +43,6 @@
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="p"/>
-                        <connections>
-                            <action selector="onButtonPlayPress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="suz-BC-9K5"/>
-                        </connections>
                     </button>
                 </subviews>
                 <constraints>
