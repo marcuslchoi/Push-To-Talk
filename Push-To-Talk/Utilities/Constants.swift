@@ -26,4 +26,5 @@ struct K {
     ]
     
     static let audiofileExtension = ".m4a"
+    static let recordingCellName = "RecordingCell"
 }

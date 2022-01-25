@@ -23,8 +23,8 @@ class RecordingsTableVC: UITableViewController {
     
     func registerTableViewCells()
     {
-        let cell = UINib(nibName: "RecordingCell", bundle: nil)
-        tableView.register(cell, forCellReuseIdentifier: "RecordingCell")
+        let cell = UINib(nibName: K.recordingCellName, bundle: nil)
+        tableView.register(cell, forCellReuseIdentifier: K.recordingCellName)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -41,7 +41,7 @@ class RecordingsTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RecordingCell", for: indexPath) as! RecordingCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.recordingCellName, for: indexPath) as! RecordingCell
         guard let localFilenames = RecordingManager.shared.getLocalFileNames() else { return cell }
         cell.lblName.text = localFilenames[indexPath.row]
         
