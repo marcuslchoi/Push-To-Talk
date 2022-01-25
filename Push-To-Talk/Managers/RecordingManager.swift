@@ -47,4 +47,18 @@ class RecordingManager {
         }
         return nil
     }
+    
+    func removeFile(localFileUrl: URL)
+    {
+        if FileManager.default.fileExists(atPath: localFileUrl.path)
+        {
+            do {
+                try FileManager.default.removeItem(at: localFileUrl)
+            }
+            catch
+            {
+                print(error)
+            }
+        }
+    }
 }

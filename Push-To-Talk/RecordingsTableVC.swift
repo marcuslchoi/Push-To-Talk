@@ -11,6 +11,8 @@ import AVFoundation
 class RecordingsTableVC: UITableViewController {
 
     var audioPlayer: AVAudioPlayer!
+    let sectionCount = 1
+    private var sectionIndex: Int { return sectionCount - 1 }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,7 @@ class RecordingsTableVC: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return sectionCount
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,6 +72,13 @@ class RecordingsTableVC: UITableViewController {
     
     @objc func onButtonDeletePress(sender: UIButton) {
         let row = sender.tag
+        guard let localUrls = RecordingManager.shared.getLocalDocURLs(), localUrls.count > row else { return }
+        let toDeleteUrl = localUrls[row]
+        print("deleting \(toDeleteUrl)")
+        RecordingManager.shared.removeFile(localFileUrl: toDeleteUrl)
+        let indexPath = IndexPath(row: row, section: sectionIndex)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        tableView.reloadData()
     }
 }
 
