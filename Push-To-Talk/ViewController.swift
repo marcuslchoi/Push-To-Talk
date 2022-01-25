@@ -12,7 +12,6 @@ class ViewController: UIViewController {
 
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
-    var audioPlayer : AVAudioPlayer!
     var isRecording: Bool { return audioRecorder != nil }
     @IBOutlet weak var btnRecord: UIButton!
     let recordingImage = UIImage(systemName: SFSymbols.mic)
@@ -87,21 +86,6 @@ class ViewController: UIViewController {
             self.showOkAlert(title: "Fail!", msg: "Recording failed.")
         }
     }
-    @IBAction func onButtonPlayPress(_ sender: Any) {
-        playAudio()
-    }
-    
-    func playAudio() {
-        
-        let audioFilename = K.localDocsUrl.appendingPathComponent("recording.m4a")
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: audioFilename)
-            audioPlayer.delegate = self
-            audioPlayer.play()
-        } catch {
-            showOkAlert(title: "Error", msg: "There was a problem playing the audio file.")
-        }
-    }
 }
 
 extension ViewController: AVAudioRecorderDelegate {
@@ -111,15 +95,5 @@ extension ViewController: AVAudioRecorderDelegate {
     
     func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
         print("Audio Record Encode Error")
-    }
-}
-
-extension ViewController: AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        print("Audio player finished playing")
-    }
-    
-    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
-        print("Audio Play Decode Error")
     }
 }

@@ -25,21 +25,11 @@
                                     <action selector="onButtonRecordPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Psk-rH-2DO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXd-ch-8aV">
-                                <rect key="frame" x="143" y="716" width="134" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="temp play button"/>
-                                <connections>
-                                    <action selector="onButtonPlayPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nth-el-Cpk"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SJj-s5-dyg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9qB-aH-Hv3"/>
-                            <constraint firstItem="HXd-ch-8aV" firstAttribute="top" secondItem="SJj-s5-dyg" secondAttribute="bottom" constant="252" id="MYg-Vc-Mos"/>
-                            <constraint firstItem="HXd-ch-8aV" firstAttribute="centerX" secondItem="SJj-s5-dyg" secondAttribute="centerX" id="Whf-AH-coV"/>
                             <constraint firstItem="SJj-s5-dyg" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="guE-Yj-Tsr"/>
                         </constraints>
                     </view>
