@@ -10,6 +10,7 @@ import AVFoundation
 
 class RecordingsTableVC: UITableViewController {
 
+    var currPlayingButton: UIButton?
     var audioPlayer: AVAudioPlayer!
     let sectionCount = 1
     private var sectionIndex: Int { return sectionCount - 1 }
@@ -54,6 +55,9 @@ class RecordingsTableVC: UITableViewController {
     
     @objc func onButtonPlayPress(sender: UIButton) {
         let row = sender.tag
+        sender.backgroundColor = .systemGreen
+        currPlayingButton?.backgroundColor = .systemBackground
+        currPlayingButton = sender
         playAudio(at: row)
     }
     
@@ -85,6 +89,7 @@ class RecordingsTableVC: UITableViewController {
 extension RecordingsTableVC: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         print("Audio player finished playing")
+        currPlayingButton?.backgroundColor = .systemBackground
     }
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
