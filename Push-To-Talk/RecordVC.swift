@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController {
+class RecordVC: UIViewController {
 
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: AVAudioRecorderDelegate {
+extension RecordVC: AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         print("audio recorder did finish recording")
     }
