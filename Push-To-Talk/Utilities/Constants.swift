@@ -24,4 +24,6 @@ struct K {
         AVNumberOfChannelsKey: 1,
         AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
     ]
+    
+    static let audiofileExtension = ".m4a"
 }

@@ -66,7 +66,8 @@ class RecordVC: UIViewController {
     }
     
     func startRecording() {
-        let audioFilename = K.localDocsUrl.appendingPathComponent("recording.m4a")
+        let defaultRecordingName = RecordingManager.shared.currDefaultRecordingName
+        let audioFilename = K.localDocsUrl.appendingPathComponent("\(defaultRecordingName)\(K.audiofileExtension)")
         do {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: K.recordingSettings)
             audioRecorder.delegate = self
