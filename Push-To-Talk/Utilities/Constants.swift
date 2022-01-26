@@ -16,6 +16,8 @@ enum SFSymbols {
 
 struct K {
     
+    static let recordingsTitle = "Recordings"
+    static let recordTitle = "Push To Talk"
     static let largeImgConfig = UIImage.SymbolConfiguration(pointSize: 150, weight: .bold, scale: .large)
     static let recordingImage = UIImage(systemName: SFSymbols.mic, withConfiguration: largeImgConfig)
     static let stopImage = UIImage(systemName: SFSymbols.stop, withConfiguration: largeImgConfig)

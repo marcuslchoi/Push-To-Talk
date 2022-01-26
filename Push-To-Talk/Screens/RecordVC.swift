@@ -14,12 +14,13 @@ class RecordVC: UIViewController {
     var audioRecorder: AVAudioRecorder!
     var isRecording: Bool { return audioRecorder != nil }
     @IBOutlet weak var btnRecord: UIButton!
+    @IBOutlet weak var btnGoToRecordings: UIBarButtonItem!
     
     let recManager = RecordingManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Push To Talk"
+        title = K.recordTitle
         requestRecordingPermission()
         configureRecordButton()
     }

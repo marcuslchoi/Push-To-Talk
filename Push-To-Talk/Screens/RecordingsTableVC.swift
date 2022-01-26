@@ -19,7 +19,7 @@ class RecordingsTableVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Recordings"
+        title = K.recordingsTitle
         populateRecordings()
         registerTableViewCells()
     }
