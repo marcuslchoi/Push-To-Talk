@@ -68,19 +68,13 @@
 		2C703C22279F541300AB313E /* Push-To-Talk */ = {
 			isa = PBXGroup;
 			children = (
+				2C703C37279F57E000AB313E /* Utilities */,
+				2C703C4B27A0CF2700AB313E /* Custom Views */,
+				2C703C4A27A0CEFB00AB313E /* Screens */,
 				2C703C3F279F6BC800AB313E /* Managers */,
 				2C703C3A279F5EF900AB313E /* Extensions */,
-				2C703C37279F57E000AB313E /* Utilities */,
-				2C703C23279F541300AB313E /* AppDelegate.swift */,
-				2C703C25279F541300AB313E /* SceneDelegate.swift */,
-				2C703C27279F541300AB313E /* RecordVC.swift */,
-				2C703C3D279F696B00AB313E /* RecordingsTableVC.swift */,
-				2C703C29279F541300AB313E /* Main.storyboard */,
-				2C703C2C279F541800AB313E /* Assets.xcassets */,
-				2C703C2E279F541800AB313E /* LaunchScreen.storyboard */,
+				2C703C4C27A0CF8C00AB313E /* Support */,
 				2C703C31279F541800AB313E /* Info.plist */,
-				2C703C42279F72DD00AB313E /* RecordingCell.swift */,
-				2C703C43279F72DD00AB313E /* RecordingCell.xib */,
 			);
 			path = "Push-To-Talk";
 			sourceTree = "<group>";
@@ -107,6 +101,36 @@
 				2C703C40279F6BDA00AB313E /* RecordingManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		2C703C4A27A0CEFB00AB313E /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				2C703C27279F541300AB313E /* RecordVC.swift */,
+				2C703C3D279F696B00AB313E /* RecordingsTableVC.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		2C703C4B27A0CF2700AB313E /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				2C703C29279F541300AB313E /* Main.storyboard */,
+				2C703C42279F72DD00AB313E /* RecordingCell.swift */,
+				2C703C43279F72DD00AB313E /* RecordingCell.xib */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		2C703C4C27A0CF8C00AB313E /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				2C703C23279F541300AB313E /* AppDelegate.swift */,
+				2C703C25279F541300AB313E /* SceneDelegate.swift */,
+				2C703C2C279F541800AB313E /* Assets.xcassets */,
+				2C703C2E279F541800AB313E /* LaunchScreen.storyboard */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
