@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUR-vy-J0x">
-                        <rect key="frame" x="15" y="12" width="190" height="20"/>
+                        <rect key="frame" x="15" y="12" width="170" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="I1W-Td-P8V"/>
                         </constraints>
@@ -27,32 +27,34 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPD-Z7-4ME">
-                        <rect key="frame" x="265" y="7" width="50" height="30"/>
+                        <rect key="frame" x="250" y="0.0" width="70" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="bRB-fe-kL9"/>
-                            <constraint firstAttribute="height" constant="30" id="cZA-f4-utb"/>
+                            <constraint firstAttribute="width" constant="70" id="bRB-fe-kL9"/>
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="d"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xa-2y-aX3">
-                        <rect key="frame" x="210" y="7" width="50" height="30"/>
+                        <rect key="frame" x="190" y="0.0" width="60" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="GxU-GW-vqR"/>
-                            <constraint firstAttribute="height" constant="30" id="ZqV-q5-OlA"/>
+                            <constraint firstAttribute="width" constant="60" id="GxU-GW-vqR"/>
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="p"/>
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="9xa-2y-aX3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Miy-Ms-bjo"/>
+                    <constraint firstAttribute="bottom" secondItem="EPD-Z7-4ME" secondAttribute="bottom" id="ZvH-Au-XY3"/>
                     <constraint firstItem="VUR-vy-J0x" firstAttribute="centerY" secondItem="9xa-2y-aX3" secondAttribute="centerY" id="dds-hx-fCC"/>
-                    <constraint firstAttribute="trailing" secondItem="EPD-Z7-4ME" secondAttribute="trailing" constant="5" id="eFx-Zx-NLR"/>
-                    <constraint firstItem="EPD-Z7-4ME" firstAttribute="leading" secondItem="9xa-2y-aX3" secondAttribute="trailing" constant="5" id="gE1-zE-H8l"/>
+                    <constraint firstAttribute="trailing" secondItem="EPD-Z7-4ME" secondAttribute="trailing" id="eFx-Zx-NLR"/>
+                    <constraint firstItem="EPD-Z7-4ME" firstAttribute="leading" secondItem="9xa-2y-aX3" secondAttribute="trailing" id="gE1-zE-H8l"/>
+                    <constraint firstAttribute="bottom" secondItem="9xa-2y-aX3" secondAttribute="bottom" id="hiR-Kh-DNP"/>
                     <constraint firstItem="VUR-vy-J0x" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="hzU-bP-JLr"/>
                     <constraint firstItem="VUR-vy-J0x" firstAttribute="centerY" secondItem="EPD-Z7-4ME" secondAttribute="centerY" id="mje-Ex-zTJ"/>
                     <constraint firstItem="VUR-vy-J0x" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ppp-i3-tKS"/>
                     <constraint firstItem="9xa-2y-aX3" firstAttribute="leading" secondItem="VUR-vy-J0x" secondAttribute="trailing" constant="5" id="tYF-yu-JlG"/>
+                    <constraint firstItem="EPD-Z7-4ME" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="u5j-Lf-gZR"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

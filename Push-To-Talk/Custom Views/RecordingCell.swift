@@ -10,7 +10,6 @@ import UIKit
 class RecordingCell: UITableViewCell {
 
     let playImage = UIImage(systemName: SFSymbols.play)
-    let deleteImage = UIImage(systemName: SFSymbols.delete)
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var btnPlay: UIButton!
@@ -24,14 +23,13 @@ class RecordingCell: UITableViewCell {
     private func configure() {
         btnPlay.setImage(playImage, for: .normal)
         btnPlay.setTitle("", for: .normal)
-        btnDelete.setImage(deleteImage, for: .normal)
-        btnDelete.setTitle("", for: .normal)
+        btnDelete.setTitle("Delete", for: .normal)
+        btnDelete.setTitleColor(.white, for: .normal)
+        btnDelete.layer.backgroundColor = UIColor.systemRed.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

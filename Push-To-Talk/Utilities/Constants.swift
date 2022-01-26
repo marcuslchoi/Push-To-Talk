@@ -11,7 +11,6 @@ import AVFoundation
 enum SFSymbols {
     static let mic = "mic"
     static let play = "play"
-    static let delete = "delete.left"
     static let stop = "stop"
 }
 
