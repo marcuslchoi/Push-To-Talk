@@ -48,7 +48,7 @@ struct K {
     static let localDocsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     static let recordingSettings = [
         AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-        AVSampleRateKey: 12000,
+        AVSampleRateKey: 48000,
         AVNumberOfChannelsKey: 1,
         AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
     ]
