@@ -20,11 +20,11 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJj-s5-dyg">
                                 <rect key="frame" x="107" y="375" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="3Yi-5y-YbQ"/>
-                                    <constraint firstAttribute="height" constant="200" id="NaZ-NY-Pnw"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="3Yi-5y-YbQ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="NaZ-NY-Pnw"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Record"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Record"/>
                                 <connections>
                                     <action selector="onButtonRecordPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Psk-rH-2DO"/>
                                 </connections>
