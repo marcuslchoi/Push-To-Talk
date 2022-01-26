@@ -17,6 +17,7 @@ enum SFSymbols {
 
 struct K {
     
+    static let defaultRecordingName = "Recording"
     static let localDocsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     static let recordingSettings = [
         AVFormatIDKey: Int(kAudioFormatMPEG4AAC),

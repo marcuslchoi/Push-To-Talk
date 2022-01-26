@@ -8,14 +8,13 @@
 import Foundation
 
 class RecordingManager {
-    
-    var currDefaultRecordingName = "Recording"
+
     //singleton
     static var shared = RecordingManager()
     private init() {}
     
-    func renameFile(newName: String) { 
-        let oldAudioFilename = K.localDocsUrl.appendingPathComponent("\(currDefaultRecordingName)\(K.audiofileExtension)")
+    func renameFile(oldName: String, newName: String) {
+        let oldAudioFilename = K.localDocsUrl.appendingPathComponent("\(oldName)\(K.audiofileExtension)")
         let newAudioFilename = K.localDocsUrl.appendingPathComponent("\(newName)\(K.audiofileExtension)")
         do {
             try FileManager.default.moveItem(at: oldAudioFilename, to: newAudioFilename)

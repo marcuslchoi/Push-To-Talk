@@ -16,6 +16,7 @@ class RecordVC: UIViewController {
     @IBOutlet weak var btnRecord: UIButton!
     let recordingImage = UIImage(systemName: SFSymbols.mic)
     let stopImage = UIImage(systemName: SFSymbols.stop)
+    let recManager = RecordingManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,8 +67,7 @@ class RecordVC: UIViewController {
     }
     
     func startRecording() {
-        let defaultRecordingName = RecordingManager.shared.currDefaultRecordingName
-        let audioFilename = K.localDocsUrl.appendingPathComponent("\(defaultRecordingName)\(K.audiofileExtension)")
+        let audioFilename = K.localDocsUrl.appendingPathComponent("\(K.defaultRecordingName)\(K.audiofileExtension)")
         do {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: K.recordingSettings)
             audioRecorder.delegate = self
@@ -93,18 +93,13 @@ class RecordVC: UIViewController {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                if let newName = alert.textFields?.first?.text {
-                    if !newName.isEmpty {
-                        RecordingManager.shared.renameFile(newName: newName)
-                    }
-                    else {
-                        let dateStr = RecordingManager.shared.getCurrentDateString()
-                        RecordingManager.shared.renameFile(newName: dateStr)
-                    }
+                if let txt = alert.textFields?.first?.text {
+                    let newName = txt.isEmpty ? self.recManager.getCurrentDateString() : txt
+                    self.recManager.renameFile(oldName: K.defaultRecordingName, newName: newName)
                 }
             }
             alert.addTextField { textField in
-                textField.placeholder = "input recording name..."
+                textField.placeholder = "Input recording name..."
             }
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
