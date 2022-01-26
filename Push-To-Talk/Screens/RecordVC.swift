@@ -79,6 +79,8 @@ class RecordVC: UIViewController {
     }
     
     func finishRecording(success: Bool) {
+        
+        guard isRecording else { return }
         audioRecorder.stop()
         audioRecorder = nil
 
@@ -120,6 +122,6 @@ extension RecordVC: AVAudioRecorderDelegate {
     }
     
     func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
-        showOkAlert(title: "Recording failed!", msg: "Please try again.")
+        finishRecording(success: false)
     }
 }
