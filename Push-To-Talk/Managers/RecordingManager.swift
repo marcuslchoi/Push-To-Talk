@@ -39,6 +39,18 @@ class RecordingManager {
         }
     }
     
+    func getRecordings() -> [Recording]? {
+        guard let urls = getLocalDocURLs() else { return nil }
+
+        var recordings: [Recording] = []
+        for url in urls {
+            let filename = url.deletingPathExtension().lastPathComponent
+            let recording = Recording(name: filename, url: url)
+            recordings.append(recording)
+        }
+        return recordings
+    }
+    
     func getLocalFileNames() -> [String]?
     {
         if let urls = getLocalDocURLs()
