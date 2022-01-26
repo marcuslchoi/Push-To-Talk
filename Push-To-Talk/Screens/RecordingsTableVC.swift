@@ -22,8 +22,10 @@ class RecordingsTableVC: UITableViewController {
         title = K.recordingsTitle
         populateRecordings()
         registerTableViewCells()
+        tableView.reloadData()
     }
     
+    //populate the currRecordings property
     private func populateRecordings() {
         recManager.getRecordings { [weak self] result in
             guard let self = self else { return }
@@ -40,10 +42,6 @@ class RecordingsTableVC: UITableViewController {
     {
         let cell = UINib(nibName: K.recordingCellName, bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: K.recordingCellName)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
