@@ -11,6 +11,7 @@ class RecordingManager {
 
     //singleton
     static var shared = RecordingManager()
+    weak var delegate: RecordingManagerDelegate?
     private init() {}
     
     func renameFile(oldName: String, newName: String) {
@@ -19,7 +20,7 @@ class RecordingManager {
         do {
             try FileManager.default.moveItem(at: oldAudioFilename, to: newAudioFilename)
         } catch {
-            print(error)
+            delegate?.onRenameFileFail(failedName: newName)
         }
     }
     
@@ -91,4 +92,8 @@ class RecordingManager {
         let dateStr = "\(c.month!) \(c.day!) \(c.year!), \(c.hour!):\(minStr):\(secStr)"
         return dateStr
     }
+}
+
+protocol RecordingManagerDelegate: AnyObject {
+    func onRenameFileFail(failedName: String)
 }

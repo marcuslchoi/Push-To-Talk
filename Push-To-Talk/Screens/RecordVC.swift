@@ -21,6 +21,7 @@ class RecordVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Push To Talk"
+        recManager.delegate = self
         requestRecordingPermission()
         configureRecordButton()
     }
@@ -114,5 +115,11 @@ extension RecordVC: AVAudioRecorderDelegate {
     
     func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
         print("Audio Record Encode Error")
+    }
+}
+
+extension RecordVC: RecordingManagerDelegate {
+    func onRenameFileFail(failedName: String) {
+        showNameRecordingAlert(title: "Name save failed", msg: "There was an error saving your recording. Please rename it.")
     }
 }
