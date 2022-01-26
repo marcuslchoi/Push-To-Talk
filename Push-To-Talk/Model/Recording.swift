@@ -11,8 +11,8 @@ struct Recording {
     let name: String
     let url: URL
     
-    init(name: String, url: URL) {
-        self.name = name
+    init(url: URL) {
+        self.name = url.deletingPathExtension().lastPathComponent
         self.url = url
     }
 }

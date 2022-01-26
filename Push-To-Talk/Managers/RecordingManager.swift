@@ -52,8 +52,7 @@ class RecordingManager {
 
         var recordings: [Recording] = []
         for url in urls {
-            let filename = url.deletingPathExtension().lastPathComponent
-            let recording = Recording(name: filename, url: url)
+            let recording = Recording(url: url)
             recordings.append(recording)
         }
         completion(.success(recordings))
