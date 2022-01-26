@@ -21,7 +21,6 @@ class RecordVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Push To Talk"
-        recManager.delegate = self
         requestRecordingPermission()
         configureRecordButton()
     }
@@ -96,7 +95,12 @@ class RecordVC: UIViewController {
             let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
                 if let txt = alert.textFields?.first?.text {
                     let newName = txt.isEmpty ? self.recManager.getCurrentDateString() : txt
-                    self.recManager.renameFile(oldName: K.defaultRecordingName, newName: newName)
+                    self.recManager.renameFile(oldName: K.defaultRecordingName, newName: newName) { [weak self] error in
+                        guard let self = self else { return }
+                        if let error = error {
+                            self.showNameRecordingAlert(title: "Name save failed", msg: error.rawValue)
+                        }
+                    }
                 }
             }
             alert.addTextField { textField in
@@ -115,11 +119,5 @@ extension RecordVC: AVAudioRecorderDelegate {
     
     func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
         print("Audio Record Encode Error")
-    }
-}
-
-extension RecordVC: RecordingManagerDelegate {
-    func onRenameFileFail(failedName: String) {
-        showNameRecordingAlert(title: "Name save failed", msg: "There was an error saving your recording. Please rename it.")
     }
 }

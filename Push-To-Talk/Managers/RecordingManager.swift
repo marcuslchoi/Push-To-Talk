@@ -8,6 +8,7 @@
 import Foundation
 
 enum RecordingError: String, Error {
+    case invalidFilename = "Invalid filename. Please try a different name."
     case unableToFindFiles = "Cannot locate files. Please try again."
 }
 
@@ -15,16 +16,15 @@ class RecordingManager {
 
     //singleton
     static var shared = RecordingManager()
-    weak var delegate: RecordingManagerDelegate?
     private init() {}
     
-    func renameFile(oldName: String, newName: String) {
+    func renameFile(oldName: String, newName: String, completion: (RecordingError?) -> Void) {
         let oldAudioFilename = K.localDocsUrl.appendingPathComponent("\(oldName)\(K.audiofileExtension)")
         let newAudioFilename = K.localDocsUrl.appendingPathComponent("\(newName)\(K.audiofileExtension)")
         do {
             try FileManager.default.moveItem(at: oldAudioFilename, to: newAudioFilename)
         } catch {
-            delegate?.onRenameFileFail(failedName: newName)
+            completion(.invalidFilename)
         }
     }
     
@@ -99,8 +99,4 @@ class RecordingManager {
         let dateStr = "\(c.month!) \(c.day!) \(c.year!), \(c.hour!):\(minStr):\(secStr)"
         return dateStr
     }
-}
-
-protocol RecordingManagerDelegate: AnyObject {
-    func onRenameFileFail(failedName: String)
 }

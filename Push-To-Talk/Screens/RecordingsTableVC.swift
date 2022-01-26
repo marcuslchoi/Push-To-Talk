@@ -25,7 +25,8 @@ class RecordingsTableVC: UITableViewController {
     }
     
     private func populateRecordings() {
-        recManager.getRecordings { result in
+        recManager.getRecordings { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let recordings):
                 self.currRecordings = recordings
