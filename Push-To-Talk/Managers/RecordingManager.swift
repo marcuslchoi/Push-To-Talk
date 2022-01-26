@@ -88,7 +88,7 @@ class RecordingManager {
         let minutes = c.minute!
         let minStr = minutes < 10 ? "0\(minutes)" : "\(minutes)"
         
-        let dateStr = "\(c.month!) \(c.day!) \(c.year!), \(c.hour!):\(minStr):\(secStr)"
+        let dateStr = "\(c.month!)-\(c.day!)-\(c.year!), \(c.hour!):\(minStr):\(secStr)"
         return dateStr
     }
 }
