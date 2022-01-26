@@ -89,24 +89,27 @@ class RecordingsTableVC: UITableViewController {
             return
         }
         let recording = recordings[row]
-        let url = recording.url
-        let fileName =  recording.name
-        let alert = UIAlertController(title: "Are you sure?", message: "Do you want to delete \(fileName)?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Are you sure?", message: "Do you want to delete \(recording.name)?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
-            self.deleteFile(url: url, row: row)
+            guard self.deleteFile(url: recording.url, row: row) else {
+                self.showOkAlert(title: "Error", msg: "Unable to delete recording.")
+                return
+            }
         }
         alert.addAction(cancelAction)
         alert.addAction(deleteAction)
         self.present(alert, animated: true, completion: nil)
     }
     
-    private func deleteFile(url: URL, row: Int) {
-        print("deleting \(url)")
-        RecordingManager.shared.removeFile(localFileUrl: url)
-        let indexPath = IndexPath(row: row, section: sectionIndex)
-        tableView.deleteRows(at: [indexPath], with: .fade)
-        tableView.reloadData()
+    private func deleteFile(url: URL, row: Int) -> Bool {
+        if recManager.removeFile(localFileUrl: url) {
+            let indexPath = IndexPath(row: row, section: sectionIndex)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
+            return true
+        }
+        return false
     }
 }
 

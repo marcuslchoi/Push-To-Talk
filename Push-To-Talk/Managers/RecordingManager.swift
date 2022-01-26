@@ -12,9 +12,7 @@ class RecordingManager {
     var currDefaultRecordingName = "Recording"
     //singleton
     static var shared = RecordingManager()
-    //var delegate: RecordingManagerDelegate?
-    private init() {
-    }
+    private init() {}
     
     func renameFile(newName: String) { 
         let oldAudioFilename = K.localDocsUrl.appendingPathComponent("\(currDefaultRecordingName)\(K.audiofileExtension)")
@@ -26,7 +24,7 @@ class RecordingManager {
         }
     }
     
-    func getLocalDocURLs() -> [URL]?
+    private func getLocalDocURLs() -> [URL]?
     {
         do
         {
@@ -51,21 +49,8 @@ class RecordingManager {
         return recordings
     }
     
-    func getLocalFileNames() -> [String]?
-    {
-        if let urls = getLocalDocURLs()
-        {
-            let fileNames = urls.map{ $0.deletingPathExtension().lastPathComponent }
-            return fileNames
-        }
-        return nil
-    }
-    
-    func getFileName(from url: URL) -> String {
-        return url.deletingPathExtension().lastPathComponent
-    }
-    
-    func removeFile(localFileUrl: URL)
+    //return true if successfully removed file
+    func removeFile(localFileUrl: URL) -> Bool
     {
         if FileManager.default.fileExists(atPath: localFileUrl.path)
         {
@@ -75,8 +60,14 @@ class RecordingManager {
             catch
             {
                 print(error)
+                return false
             }
+        } else {
+            print("the file does not exist at \(localFileUrl)")
+            return false
         }
+        
+        return true
     }
     
     func getCurrentDateString() -> String {
