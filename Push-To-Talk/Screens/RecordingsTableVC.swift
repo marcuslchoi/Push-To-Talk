@@ -14,6 +14,7 @@ class RecordingsTableVC: UITableViewController {
     var audioPlayer: AVAudioPlayer!
     let sectionCount = 1
     private var sectionIndex: Int { return sectionCount - 1 }
+    let recManager = RecordingManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +37,14 @@ class RecordingsTableVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let localFilenames = RecordingManager.shared.getLocalFileNames() else { return 0 }
-        return localFilenames.count
+        guard let recordings = recManager.getRecordings() else { return 0 }
+        return recordings.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.recordingCellName, for: indexPath) as! RecordingCell
-        guard let localFilenames = RecordingManager.shared.getLocalFileNames() else { return cell }
-        cell.lblName.text = localFilenames[indexPath.row]
+        guard let recordings = recManager.getRecordings() else { return cell }
+        cell.lblName.text = recordings[indexPath.row].name
         
         cell.btnPlay.tag = indexPath.row
         cell.btnPlay.addTarget(self, action: #selector(onButtonPlayPress), for: .touchUpInside)
@@ -65,10 +66,10 @@ class RecordingsTableVC: UITableViewController {
     
     func playAudio(at row: Int) {
         //todo show error notification
-        guard let localUrls = RecordingManager.shared.getLocalDocURLs(), localUrls.count > row else { return }
-        let audioFilename = localUrls[row]
+        guard let recordings = recManager.getRecordings(), recordings.count > row else { return }
+        let audioFileUrl = recordings[row].url
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: audioFilename)
+            audioPlayer = try AVAudioPlayer(contentsOf: audioFileUrl)
             audioPlayer.delegate = self
             audioPlayer.play()
         } catch {
@@ -83,12 +84,13 @@ class RecordingsTableVC: UITableViewController {
     
     private func showConfirmDeleteAlert(for row: Int)
     {
-        guard let localUrls = RecordingManager.shared.getLocalDocURLs(), localUrls.count > row else {
+        guard let recordings = recManager.getRecordings(), recordings.count > row else {
             showOkAlert(title: "Error", msg: "There was an error locating this file.")
             return
         }
-        let url = localUrls[row]
-        let fileName =  RecordingManager.shared.getFileName(from: url)
+        let recording = recordings[row]
+        let url = recording.url
+        let fileName =  recording.name
         let alert = UIAlertController(title: "Are you sure?", message: "Do you want to delete \(fileName)?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
