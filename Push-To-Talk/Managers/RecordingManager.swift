@@ -10,6 +10,8 @@ import Foundation
 enum RecordingError: String, Error {
     case invalidFilename = "Invalid filename. Please try a different name."
     case unableToFindFiles = "Cannot locate files. Please try again."
+    case fileDoesNotExist = "The file doesn't exist!"
+    case failedToRemoveFile = "Failed to remove file."
 }
 
 class RecordingManager {
@@ -26,6 +28,7 @@ class RecordingManager {
         } catch {
             completion(.invalidFilename)
         }
+        completion(nil)
     }
     
     private func getLocalDocURLs() -> [URL]?
@@ -57,7 +60,7 @@ class RecordingManager {
     }
     
     //return true if successfully removed file
-    func removeFile(localFileUrl: URL) -> Bool
+    func removeFile(localFileUrl: URL, completion: (RecordingError?) -> Void)
     {
         if FileManager.default.fileExists(atPath: localFileUrl.path)
         {
@@ -66,15 +69,12 @@ class RecordingManager {
             }
             catch
             {
-                print(error)
-                return false
+                completion(.failedToRemoveFile)
             }
         } else {
-            print("the file does not exist at \(localFileUrl)")
-            return false
+            completion(.fileDoesNotExist)
         }
-        
-        return true
+        completion(nil)
     }
     
     func getCurrentDateString() -> String {
