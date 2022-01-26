@@ -132,5 +132,6 @@ extension RecordingsTableVC: AVAudioPlayerDelegate {
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
         print("Audio Play Decode Error")
+        showOkAlert(title: "Error", msg: "There was a problem playing the audio file.")
     }
 }
