@@ -33,7 +33,7 @@ class RecordingsTableVC: UITableViewController {
             case .success(let recordings):
                 self.currRecordings = recordings
             case .failure(let error):
-                self.showOkAlert(title: "Error", msg: error.rawValue)
+                self.showOkAlert(title: Alert.errorTitle, msg: error.rawValue)
             }
         }
     }
@@ -81,7 +81,7 @@ class RecordingsTableVC: UITableViewController {
             audioPlayer.delegate = self
             audioPlayer.play()
         } catch {
-            showOkAlert(title: "Error", msg: "There was a problem playing the audio file.")
+            showOkAlert(title: Alert.errorTitle, msg: Alert.playFileFailedMsg)
         }
     }
     
@@ -93,9 +93,9 @@ class RecordingsTableVC: UITableViewController {
     private func showConfirmDeleteAlert(for row: Int)
     {
         let recording = currRecordings[row]
-        let alert = UIAlertController(title: "Are you sure?", message: "Do you want to delete \(recording.name)?", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+        let alert = UIAlertController(title: Alert.confirmDeleteTitle, message: Alert.getDeleteConfirmMsg(filename: recording.name), preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: Alert.cancelButtonTitle, style: .default)
+        let deleteAction = UIAlertAction(title: Alert.deleteButtonTitle, style: .destructive) { action in
             self.deleteFile(url: recording.url, row: row)
         }
         alert.addAction(cancelAction)
@@ -107,7 +107,7 @@ class RecordingsTableVC: UITableViewController {
         recManager.removeFile(localFileUrl: url) { [weak self] error in
             guard let self = self else { return }
             if let error = error {
-                self.showOkAlert(title: "Error", msg: error.rawValue)
+                self.showOkAlert(title: Alert.errorTitle, msg: error.rawValue)
             } else {
                 onDeleteFileSuccess(row: row)
             }
@@ -132,6 +132,6 @@ extension RecordingsTableVC: AVAudioPlayerDelegate {
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
         print("Audio Play Decode Error")
-        showOkAlert(title: "Error", msg: "There was a problem playing the audio file.")
+        showOkAlert(title: Alert.errorTitle, msg: Alert.playFileFailedMsg)
     }
 }

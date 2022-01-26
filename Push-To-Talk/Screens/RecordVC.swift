@@ -48,12 +48,12 @@ class RecordVC: UIViewController {
                     if allowed {
                         // recording allowed
                     } else {
-                        self.showOkAlert(title: "Cannot Record", msg: "Please allow access to the microphone in order to record audio.")
+                        self.showOkAlert(title: Alert.noMicTitle, msg: Alert.noMicMsg)
                     }
                 }
             }
         } catch {
-            self.showOkAlert(title: "Error", msg: "There was an error enabling the microphone, please try again.")
+            self.showOkAlert(title: Alert.errorTitle, msg: Alert.micEnableErrorMsg)
         }
     }
     
@@ -85,9 +85,9 @@ class RecordVC: UIViewController {
         audioRecorder = nil
 
         if success {
-            self.showNameRecordingAlert(title: "Success!", msg: "Please name your recording.")
+            self.showNameRecordingAlert(title: Alert.successTitle, msg: Alert.nameRecordingMsg)
         } else {
-            self.showOkAlert(title: "Fail!", msg: "Recording failed.")
+            self.showOkAlert(title: Alert.failTitle, msg: Alert.recordingFailMsg)
         }
     }
     
@@ -96,19 +96,19 @@ class RecordVC: UIViewController {
     {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            let okAction = UIAlertAction(title: Alert.okButtonTitle, style: .default) { (action) in
                 if let txt = alert.textFields?.first?.text {
                     let newName = txt.isEmpty ? self.recManager.getCurrentDateString() : txt
                     self.recManager.renameFile(oldName: K.defaultRecordingName, newName: newName) { [weak self] error in
                         guard let self = self else { return }
                         if let error = error {
-                            self.showNameRecordingAlert(title: "Name save failed", msg: error.rawValue)
+                            self.showNameRecordingAlert(title: Alert.nameSaveFailedTitle, msg: error.rawValue)
                         }
                     }
                 }
             }
             alert.addTextField { textField in
-                textField.placeholder = "Input recording name..."
+                textField.placeholder = Alert.inputRecordingNamePlaceholder
             }
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)

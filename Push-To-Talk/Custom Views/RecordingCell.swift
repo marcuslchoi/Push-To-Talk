@@ -23,7 +23,7 @@ class RecordingCell: UITableViewCell {
     private func configure() {
         btnPlay.setImage(playImage, for: .normal)
         btnPlay.setTitle("", for: .normal)
-        btnDelete.setTitle("Delete", for: .normal)
+        btnDelete.setTitle(Alert.deleteButtonTitle, for: .normal)
         btnDelete.setTitleColor(.white, for: .normal)
         btnDelete.layer.backgroundColor = UIColor.systemRed.cgColor
     }
