@@ -20,6 +20,7 @@
 		2C703C44279F72DD00AB313E /* RecordingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C703C42279F72DD00AB313E /* RecordingCell.swift */; };
 		2C703C45279F72DD00AB313E /* RecordingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C703C43279F72DD00AB313E /* RecordingCell.xib */; };
 		2C703C4F27A0D1B700AB313E /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C703C4E27A0D1B700AB313E /* Recording.swift */; };
+		2C703C5127A1C4D600AB313E /* RecordingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C703C5027A1C4D600AB313E /* RecordingError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		2C703C42279F72DD00AB313E /* RecordingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingCell.swift; sourceTree = "<group>"; };
 		2C703C43279F72DD00AB313E /* RecordingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordingCell.xib; sourceTree = "<group>"; };
 		2C703C4E27A0D1B700AB313E /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
+		2C703C5027A1C4D600AB313E /* RecordingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				2C703C38279F57EE00AB313E /* Constants.swift */,
+				2C703C5027A1C4D600AB313E /* RecordingError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			files = (
 				2C703C28279F541300AB313E /* RecordVC.swift in Sources */,
 				2C703C41279F6BDA00AB313E /* RecordingManager.swift in Sources */,
+				2C703C5127A1C4D600AB313E /* RecordingError.swift in Sources */,
 				2C703C24279F541300AB313E /* AppDelegate.swift in Sources */,
 				2C703C44279F72DD00AB313E /* RecordingCell.swift in Sources */,
 				2C703C4F27A0D1B700AB313E /* Recording.swift in Sources */,

@@ -7,13 +7,6 @@
 
 import Foundation
 
-enum RecordingError: String, Error {
-    case invalidFilename = "Invalid filename. Please try a different name."
-    case unableToFindFiles = "Cannot locate files. Please try again."
-    case fileDoesNotExist = "The file doesn't exist!"
-    case failedToRemoveFile = "Failed to remove file."
-}
-
 class RecordingManager {
 
     //singleton
