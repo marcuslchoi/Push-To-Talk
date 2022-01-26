@@ -51,7 +51,6 @@ class RecordingManager {
         completion(.success(recordings))
     }
     
-    //return true if successfully removed file
     func removeFile(localFileUrl: URL, completion: (RecordingError?) -> Void)
     {
         if FileManager.default.fileExists(atPath: localFileUrl.path)
