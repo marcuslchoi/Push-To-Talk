@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum RecordingError: String, Error {
+    case unableToFindFiles = "Cannot locate files. Please try again."
+}
+
 class RecordingManager {
 
     //singleton
@@ -37,8 +41,11 @@ class RecordingManager {
         }
     }
     
-    func getRecordings() -> [Recording]? {
-        guard let urls = getLocalDocURLs() else { return nil }
+    func getRecordings(completion: (Result<[Recording], RecordingError>) -> Void) {
+        guard let urls = getLocalDocURLs() else {
+            completion(.failure(.unableToFindFiles))
+            return
+        }
 
         var recordings: [Recording] = []
         for url in urls {
@@ -46,7 +53,7 @@ class RecordingManager {
             let recording = Recording(name: filename, url: url)
             recordings.append(recording)
         }
-        return recordings
+        completion(.success(recordings))
     }
     
     //return true if successfully removed file
