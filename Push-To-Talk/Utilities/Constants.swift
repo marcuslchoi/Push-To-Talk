@@ -5,16 +5,20 @@
 //  Created by Marcus Choi on 1/24/22.
 //
 
-import Foundation
+import UIKit
 import AVFoundation
 
 enum SFSymbols {
-    static let mic = "mic"
+    static let mic = "mic.circle.fill"
     static let play = "play"
-    static let stop = "stop"
+    static let stop = "stop.circle.fill"
 }
 
 struct K {
+    
+    static let largeImgConfig = UIImage.SymbolConfiguration(pointSize: 150, weight: .bold, scale: .large)
+    static let recordingImage = UIImage(systemName: SFSymbols.mic, withConfiguration: largeImgConfig)
+    static let stopImage = UIImage(systemName: SFSymbols.stop, withConfiguration: largeImgConfig)
     
     static let defaultRecordingName = "Recording"
     static let localDocsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

@@ -14,8 +14,7 @@ class RecordVC: UIViewController {
     var audioRecorder: AVAudioRecorder!
     var isRecording: Bool { return audioRecorder != nil }
     @IBOutlet weak var btnRecord: UIButton!
-    let recordingImage = UIImage(systemName: SFSymbols.mic)
-    let stopImage = UIImage(systemName: SFSymbols.stop)
+    
     let recManager = RecordingManager.shared
     
     override func viewDidLoad() {
@@ -27,11 +26,11 @@ class RecordVC: UIViewController {
     
     private func configureRecordButton() {
         if isRecording {
-            btnRecord.setImage(stopImage, for: .normal)
-            btnRecord.setTitle("Stop", for: .normal)
+            btnRecord.setImage(K.stopImage, for: .normal)
+            btnRecord.setTitle("", for: .normal)
         } else {
-            btnRecord.setImage(recordingImage, for: .normal)
-            btnRecord.setTitle("Record", for: .normal)
+            btnRecord.setImage(K.recordingImage, for: .normal)
+            btnRecord.setTitle("", for: .normal)
         }
     }
 
