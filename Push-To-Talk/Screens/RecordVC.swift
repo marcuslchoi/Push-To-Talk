@@ -89,6 +89,7 @@ class RecordVC: UIViewController {
         }
     }
     
+    //Show an alert to name the recording. If no name is entered, the name is the current date/time. If name save fails, show the alert again.
     func showNameRecordingAlert(title: String, msg: String)
     {
         DispatchQueue.main.async {
@@ -119,6 +120,6 @@ extension RecordVC: AVAudioRecorderDelegate {
     }
     
     func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
-        print("Audio Record Encode Error")
+        showOkAlert(title: "Recording failed!", msg: "Please try again.")
     }
 }
