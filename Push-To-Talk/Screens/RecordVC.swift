@@ -47,12 +47,12 @@ class RecordVC: UIViewController {
                     if allowed {
                         // recording allowed
                     } else {
-                        // failed to record!
+                        self.showOkAlert(title: "Cannot Record", msg: "Please allow access to the microphone in order to record audio.")
                     }
                 }
             }
         } catch {
-            // failed to record!
+            self.showOkAlert(title: "Error", msg: "There was an error enabling the microphone, please try again.")
         }
     }
     
