@@ -45,6 +45,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnGoToRecordings" destination="E6I-5h-2Ig" id="pfm-oE-PhE"/>
                         <outlet property="btnRecord" destination="SJj-s5-dyg" id="kOi-GC-q3s"/>
                     </connections>
                 </viewController>

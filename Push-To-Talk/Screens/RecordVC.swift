@@ -33,6 +33,7 @@ class RecordVC: UIViewController {
             btnRecord.setImage(K.recordingImage, for: .normal)
             btnRecord.setTitle("", for: .normal)
         }
+        btnGoToRecordings.isEnabled = !isRecording
     }
 
     private func requestRecordingPermission() {
